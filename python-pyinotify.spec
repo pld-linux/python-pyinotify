@@ -8,10 +8,12 @@ License:	GPL v2
 Group:		Development/Languages/Python
 Source0:	http://seb.dbzteam.org/pub/pyinotify/releases/%{module}-%{version}.tar.gz
 # Source0-md5:	a82afcfd474b2540944d7dc63efeea33
+Patch0:		%{name}-glibc.patch
 URL:		http://trac.dbzteam.org/pyinotify/wiki
 BuildRequires:	python-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
+Requires:	glibc >= 2.4
 Requires:	python-modules
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,6 +27,7 @@ változásait lehet figyelni.
 
 %prep
 %setup -q -n %{module}
+%patch0 -p1
 
 %build
 export CFLAGS="%{rpmcflags}"
