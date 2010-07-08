@@ -3,7 +3,7 @@ Summary:	Pyinotify is a pure Python module used for monitoring filesystems chang
 Summary(hu.UTF-8):	Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer változásait lehet figyelni
 Name:		python-%{module}
 Version:	0.8.9
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Development/Languages/Python
 Source0:	http://seb.dbzteam.org/pub/pyinotify/releases/%{module}-%{version}.tar.gz
