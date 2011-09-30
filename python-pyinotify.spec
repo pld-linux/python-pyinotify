@@ -44,12 +44,13 @@ változásait lehet figyelni.
 
 %build
 export CFLAGS="%{rpmcflags}"
-%{__python} setup.py build
-%{__python3} setup.py build
+%{__python} setup.py build -b build_python2
+%{__python3} setup.py build -b build_python3
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+mv build_python2 build
 %{__python} setup.py install \
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
@@ -60,6 +61,8 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 install python2/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+%{__rm} -r build
+mv build_python3 build
 %{__python3} setup.py \
         install \
         --root=$RPM_BUILD_ROOT \
