@@ -2,14 +2,15 @@
 Summary:	Pyinotify is a pure Python module used for monitoring filesystems changes
 Summary(hu.UTF-8):	Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer változásait lehet figyelni
 Name:		python-%{module}
-Version:	0.8.9
-Release:	2
+Version:	0.9.2
+Release:	1
 License:	GPL v2
 Group:		Development/Languages/Python
 Source0:	http://seb.dbzteam.org/pub/pyinotify/releases/%{module}-%{version}.tar.gz
-# Source0-md5:	1edf36d3e4329d9cbe6bd0a4094af082
+# Source0-md5:	7d344e1efe3fe342e2e052774c9779e2
 URL:		http://trac.dbzteam.org/pyinotify/wiki
 BuildRequires:	python-devel
+BuildRequires:	python3-modules
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	glibc >= 2.4
@@ -20,7 +21,21 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Pyinotify is a pure Python module used for monitoring filesystems
 changes.
 
-%description -l pl.UTF-8
+%description -l hu.UTF-8
+Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer
+változásait lehet figyelni.
+
+%package -n	python3-%{module}
+Summary:	Pyinotify is a pure Python module used for monitoring filesystems changes
+Version:	%{version}
+Release:	%{release}
+Group:		Development/Languages/Python
+
+%description -n python3-%{module}
+Pyinotify is a pure Python module used for monitoring filesystems
+changes.
+
+%description -n python3-%{module} -l hu.UTF-8
 Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer
 változásait lehet figyelni.
 
@@ -30,6 +45,7 @@ változásait lehet figyelni.
 %build
 export CFLAGS="%{rpmcflags}"
 %{__python} setup.py build
+%{__python3} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -44,12 +60,23 @@ install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 install python2/examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
+%{__python3} setup.py \
+        install \
+        --root=$RPM_BUILD_ROOT \
+        --optimize=2
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog_old NEWS_old TODO README
+%doc old/ChangeLog old/NEWS README.md
 %{_examplesdir}/%{name}-%{version}
 %{py_sitescriptdir}/*.py[co]
 %{py_sitescriptdir}/%{module}-*.egg-info
+
+%files -n python3-%{module}
+%defattr(644,root,root,755)
+%{py3_sitescriptdir}/%{module}*.py
+%{py3_sitescriptdir}/__pycache__
+%{py3_sitescriptdir}/%{module}-*.egg-info
