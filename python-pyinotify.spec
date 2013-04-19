@@ -4,7 +4,7 @@ Summary(hu.UTF-8):	Pyinotify egy egyszerű Python modul, amellyel a fájlrendsze
 Name:		python-%{module}
 Version:	0.9.4
 Release:	1
-License:	GPL v2
+License:	MIT
 Group:		Development/Languages/Python
 Source0:	http://seb.dbzteam.org/pub/pyinotify/releases/%{module}-%{version}.tar.gz
 # Source0-md5:	701c91854d241514ede7ffe72086566d
