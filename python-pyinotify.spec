@@ -1,6 +1,7 @@
 %define 	module	pyinotify
-Summary:	Pyinotify is a pure Python module used for monitoring filesystems changes
+Summary:	Pyinotify - pure Python module used for monitoring filesystems changes
 Summary(hu.UTF-8):	Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer változásait lehet figyelni
+Summary(pl.UTF-8):	Pyinotify - moduł w czystym Pythonie do monitorowania zmian w systemie plików
 Name:		python-%{module}
 Version:	0.9.4
 Release:	1
@@ -15,6 +16,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	glibc >= 2.4
 Requires:	python-modules
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,10 +27,13 @@ changes.
 Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer
 változásait lehet figyelni.
 
-%package -n	python3-%{module}
+%description -l pl.UTF-8
+Pyinotify to moduł w czystym Pythonie służący do monitorowania zmian w
+systemie plików.
+
+%package -n python3-%{module}
 Summary:	Pyinotify is a pure Python module used for monitoring filesystems changes
-Version:	%{version}
-Release:	%{release}
+Summary(pl.UTF-8):	Pyinotify - moduł w czystym Pythonie do monitorowania zmian w systemie plików
 Group:		Development/Languages/Python
 
 %description -n python3-%{module}
@@ -38,6 +43,10 @@ changes.
 %description -n python3-%{module} -l hu.UTF-8
 Pyinotify egy egyszerű Python modul, amellyel a fájlrendszer
 változásait lehet figyelni.
+
+%description -n python3-%{module} -l pl.UTF-8
+Pyinotify to moduł w czystym Pythonie służący do monitorowania zmian w
+systemie plików.
 
 %prep
 %setup -q -n %{module}-%{version}
@@ -74,12 +83,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc old/ChangeLog old/NEWS README.md
+%{py_sitescriptdir}/pyinotify.py[co]
+%{py_sitescriptdir}/pyinotify-%{version}-py*.egg-info
 %{_examplesdir}/%{name}-%{version}
-%{py_sitescriptdir}/*.py[co]
-%{py_sitescriptdir}/%{module}-*.egg-info
 
 %files -n python3-%{module}
 %defattr(644,root,root,755)
-%{py3_sitescriptdir}/%{module}*.py
+%{py3_sitescriptdir}/pyinotify.py
 %{py3_sitescriptdir}/__pycache__
-%{py3_sitescriptdir}/%{module}-*.egg-info
+%{py3_sitescriptdir}/pyinotify-%{version}-py*.egg-info
