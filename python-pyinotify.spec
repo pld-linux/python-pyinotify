@@ -15,7 +15,7 @@ BuildRequires:	python-setuptools
 BuildRequires:	python3-modules
 BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	glibc >= 2.4
 Requires:	python-modules
 BuildArch:	noarch
