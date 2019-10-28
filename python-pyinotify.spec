@@ -4,7 +4,7 @@ Summary(hu.UTF-8):	Pyinotify egy egyszerű Python modul, amellyel a fájlrendsze
 Summary(pl.UTF-8):	Pyinotify - moduł w czystym Pythonie do monitorowania zmian w systemie plików
 Name:		python-%{module}
 Version:	0.9.6
-Release:	6
+Release:	7
 License:	MIT
 Group:		Development/Languages/Python
 Source0:	http://seb.dbzteam.org/pub/pyinotify/releases/%{module}-%{version}.tar.gz
